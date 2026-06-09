@@ -11,10 +11,11 @@ const { errorHandler, notFound } = require("./middleware/errorMiddleware");
 dotenv.config();
 
 const app = express();
+const clientUrl = (process.env.CLIENT_URL || "https://nap-tap-go.vercel.app").replace(/\/$/, "");
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "https://nap-tap-go.vercel.app",
+    origin: clientUrl,
     credentials: true
   })
 );
