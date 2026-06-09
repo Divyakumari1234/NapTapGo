@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+const API_URL = import.meta.env.VITE_API_URL || "https://naptapgo-1.onrender.com/api";
 
 export const getToken = () => {
   if (typeof window === "undefined") {
