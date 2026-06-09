@@ -1,0 +1,156 @@
+{
+  "info": {
+    "name": "Mini Hotel Booking System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000/api"
+    },
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "roomId",
+      "value": ""
+    },
+    {
+      "key": "bookingId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Demo User\",\n  \"email\": \"demo@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": "{{baseUrl}}/auth/register"
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"demo@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": "{{baseUrl}}/auth/login"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Rooms",
+      "item": [
+        {
+          "name": "Get Rooms",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/rooms"
+          }
+        },
+        {
+          "name": "Filter Rooms",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/rooms?type=Deluxe&capacity=2&maxPrice=3000&sort=price&page=1&limit=10"
+          }
+        },
+        {
+          "name": "Get Room By Id",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/rooms/{{roomId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Bookings",
+      "item": [
+        {
+          "name": "Create Booking",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"roomId\": \"{{roomId}}\",\n  \"checkInDate\": \"2026-06-15\",\n  \"checkOutDate\": \"2026-06-18\"\n}"
+            },
+            "url": "{{baseUrl}}/bookings"
+          }
+        },
+        {
+          "name": "My Bookings",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": "{{baseUrl}}/bookings/my"
+          }
+        },
+        {
+          "name": "Cancel Booking",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": "{{baseUrl}}/bookings/{{bookingId}}/cancel"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        {
+          "name": "Dashboard Summary",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dashboard"
+          }
+        }
+      ]
+    }
+  ]
+}
+
