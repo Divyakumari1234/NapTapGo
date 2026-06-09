@@ -12,16 +12,9 @@ dotenv.config();
 
 const app = express();
 
-const allowedOrigins = [
-  process.env.CLIENT_URL,
-  "https://nap-tap-go.vercel.app",
-  "http://localhost:3000",
-  "http://localhost:5173"
-].filter(Boolean);
-
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: process.env.CLIENT_URL || "https://nap-tap-go.vercel.app",
     credentials: true
   })
 );
