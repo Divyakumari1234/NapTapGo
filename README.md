@@ -82,13 +82,13 @@ PORT=5000
 MONGODB_URI=mongodb://127.0.0.1:27017/mini_hotel_booking
 JWT_SECRET=replace_with_a_long_random_secret
 JWT_EXPIRES_IN=7d
-CLIENT_URL=http://localhost:3000
+CLIENT_URL=https://nap-tap-go.vercel.app
 ```
 
 Frontend:
 
 ```env
-VITE_API_URL=http://localhost:5000/api
+VITE_API_URL=https://naptapgo-1.onrender.com/api
 ```
 
 ## API Endpoints
